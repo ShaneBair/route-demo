@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       <Router>
         <ul className='navbar'>
-          {routeConfig.map((route, idx) => {
+          {Object.entries(routeConfig).map(([routeKey, route], idx) => {
             if(route.hideFromNav) return;
 
             return (

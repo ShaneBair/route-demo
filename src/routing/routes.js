@@ -5,14 +5,15 @@ import Login from '../components/Login';
 import Logout from '../components/Logout';
 import PageNotFound from '../components/PageNotFound';
 
-export const routeConfig = [
-    {
+export const routeConfig = {
+    Home: {
         path: '/',
         title: 'Home',
         element: <Home />,
         disabled: false,
+        hideFromNav: false,
     },
-    {
+    About: {
         path: '/about',
         title: 'About',
         propConfig: {
@@ -22,21 +23,22 @@ export const routeConfig = [
             return <About {...props} />;
         },
         disabled: false,
+        hideFromNav: false,
     },
-    {
+    Topics: {
         path: '/topics',
         navigatePath: '/topics',
         title: 'Topics',
         element: <Topics />,
         disabled: false,
-        subroute: [
-            {
+        subroute: {
+            Arts: {
                 path: '/topics/arts',
                 title: 'Arts',
                 element: <Arts />,
                 disabled: false,
             },
-            {
+            Crafts: {
                 path: '/topics/crafts',
                 title: 'Crafts',
                 propConfig: {
@@ -47,9 +49,10 @@ export const routeConfig = [
                 },
                 disabled: false,
             }
-        ],
+        },
+        hideFromNav: false,
     },
-    {
+    Login: {
         path: '/login',
         title: 'Login',
         propConfig: {
@@ -64,9 +67,10 @@ export const routeConfig = [
         },
         disabledCheck: (props) => {
             return props.isLogged;
-        }
+        },
+        hideFromNav: false,
     },
-    {
+    Logout: {
         path: '/logout',
         title: 'Logout',
         propConfig: {
@@ -81,12 +85,13 @@ export const routeConfig = [
         },
         disabledCheck: (props) => {
             return !props.isLogged;
-        }
+        },
+        hideFromNav: false,
     },
-    {
+    PageNotFound: {
         path: '*',
         title: 'Page Not Found',
         element: <PageNotFound />,
         hideFromNav: true,
     }
-];
+};

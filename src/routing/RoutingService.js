@@ -22,8 +22,8 @@ export const RoutingService = (props) => {
                 path={route.path} 
                 element={route.element ?? route.createElement(propMapper(route.propConfig, props))} 
             >
-                {route.subroute?.map((subroute, subkey) => {
-                    return createRoute(subroute, subkey);
+                {route.subroute && Object.entries(route.subroute).map(([subrouteKey, subroute], idx) => {
+                    return createRoute(subroute, idx);
                 })}
             </Route>
         )
@@ -31,8 +31,8 @@ export const RoutingService = (props) => {
 
     return (
         <Routes>
-            {routeConfig.map((route, key) => {
-                return createRoute(route, key);
+            {Object.entries(routeConfig).map(([routeKey, route], idx) => {
+                return createRoute(route, idx);
             })}
         </Routes>
     );
